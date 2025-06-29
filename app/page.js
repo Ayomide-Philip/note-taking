@@ -27,7 +27,6 @@ export default function NoteApp() {
         " This is a preview of the note content. It can span multiple lines and wrap within the card.",
     },
   ]);
-  const [newNote, setNewNote] = useState();
   function gettingLastIndex() {
     return notes.length > 0 ? notes.at(-1).id : 0;
   }
@@ -130,12 +129,7 @@ export default function NoteApp() {
         +
       </button>
       {newPost ? (
-        <NewPostModal
-          isNewPost={isNewPost}
-          setNewNote={setNewNote}
-          nextId={gettingLastIndex()}
-          addNewNote={addNewNote}
-        />
+        <NewPostModal isNewPost={isNewPost} addNewNote={addNewNote} />
       ) : null}
     </>
   );
