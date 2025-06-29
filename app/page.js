@@ -63,13 +63,13 @@ export default function NoteApp() {
         </div>
 
         <section className="p-6 pt-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[...Array(12)].map((_, i) => (
+          {notes.map(({ id, heading, description }) => (
             <div
-              key={i}
+              key={id}
               className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700 flex flex-col justify-between h-full"
             >
               <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-semibold">Note Title {i + 1}</h3>
+                <h3 className="text-lg font-semibold">{heading}</h3>
                 <button
                   className="text-gray-400 hover:text-blue-500"
                   title="Bookmark"
@@ -83,10 +83,7 @@ export default function NoteApp() {
                 </button>
               </div>
 
-              <p className="text-sm text-gray-400 flex-grow">
-                This is a preview of the note content. It can span multiple
-                lines and wrap within the card.
-              </p>
+              <p className="text-sm text-gray-400 flex-grow">{description}</p>
 
               <div className="mt-4 flex justify-end space-x-4">
                 <button
