@@ -1,8 +1,8 @@
 export default function NoteApp() {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-gray-900 text-white">
-      {/* Top Nav (only on small to medium) */}
-      <header className="lg:hidden bg-gray-800 shadow-md p-4 flex justify-between items-center">
+      {/* Fixed Top Nav (small to medium) */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-gray-800 shadow-md p-4 flex justify-between items-center">
         <h1 className="text-xl font-semibold">NotesApp</h1>
         <nav className="flex gap-4 text-sm">
           <a href="#" className="hover:text-blue-400">
@@ -18,7 +18,7 @@ export default function NoteApp() {
       </header>
 
       {/* Fixed Sidebar (large screens) */}
-      <aside className="hidden lg:flex fixed top-0 left-0 h-full w-64 bg-gray-800 shadow-md flex-col">
+      <aside className="hidden lg:flex fixed top-0 left-0 h-full w-64 bg-gray-800 shadow-md flex-col z-40">
         <div className="p-6 font-bold text-2xl border-b border-gray-700">
           NotesApp
         </div>
@@ -35,9 +35,9 @@ export default function NoteApp() {
         </nav>
       </aside>
 
-      {/* Main Content (shifted on large screens) */}
-      <main className="flex-1 flex flex-col lg:ml-64">
-        {/* Header */}
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col lg:ml-64 pt-16 lg:pt-0">
+        {/* Header for large screens */}
         <div className="p-4 bg-gray-800 shadow-md hidden lg:flex justify-between items-center">
           <h2 className="text-xl font-semibold">All Notes</h2>
           <div className="hidden md:block">
