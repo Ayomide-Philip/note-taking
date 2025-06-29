@@ -43,10 +43,13 @@ export default function NoteApp() {
     if (userName !== null && userName !== undefined) {
       localStorage.setItem("noteUserName", userName);
     }
-    if (notes.length > 0) {
+    if (notes.length >= 0) {
       localStorage.setItem("userNotes", JSON.stringify(notes));
     }
-  }, [userName, notes]);
+    if (trash.length > 0) {
+      localStorage.setItem("trash", JSON.stringify(trash));
+    }
+  }, [userName, notes, trash]);
 
   function bookmarkNote(userId) {
     setNotes((prev) => {
@@ -63,13 +66,19 @@ export default function NoteApp() {
   }
 
   function deleteNote(userId) {
-    const newTrash = trash.filter((note) => {
+    const newTrash = notes.find((note) => {
       return note.id === userId;
     });
 
-    setTrash((prev)=>{
-      return 
-    })
+    setTrash((prev) => {
+      return [...prev, newTrash];
+    });
+
+    setNotes((prev) => {
+      return prev.filter((note) => {
+        return note.id !== userId;
+      });
+    });
   }
   return (
     <>
@@ -144,6 +153,9 @@ export default function NoteApp() {
                   <button
                     className="flex items-center gap-1 text-gray-400 hover:text-red-500 text-sm transition"
                     title="Delete"
+                    onClick={() => {
+                      deleteNote(id);
+                    }}
                   >
                     <FaTrash className="h-4 w-4" />
                     Delete
