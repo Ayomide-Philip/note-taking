@@ -30,8 +30,9 @@ export default function ModalOverLay({ setUserName }) {
             onClick={() => {
               if (inputedUserName.length <= 3) {
                 console.log(true);
+              } else {
+                setUserName(inputedUserName);
               }
-              setUserName(inputedUserName);
             }}
           >
             Confirm
