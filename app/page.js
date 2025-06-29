@@ -1,7 +1,7 @@
 "use client";
 import { FaRegBookmark, FaEdit, FaTrash } from "react-icons/fa";
 import ModalOverLay from "./componet/modalOverlay";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { useState, useEffect } from "react";
 export default function NoteApp() {
   const [userName, setUserName] = useState();
