@@ -46,8 +46,17 @@ export default function NoteApp() {
     }
   }, [userName, notes]);
 
-  function bookmarkNote(id) {
-    console.log(id);
+  function bookmarkNote(userId) {
+    setNotes((prev) => {
+      return prev.map((note) => {
+        if (note.id == userId) {
+          return {
+            ...note,
+            bookmark: !note.bookmark,
+          };
+        }
+      });
+    });
   }
   return (
     <>
@@ -78,7 +87,7 @@ export default function NoteApp() {
 
         {notes.length > 0 ? (
           <section className="p-6 pt-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {notes.map(({ id, heading, description }) => (
+            {notes.map(({ id, heading, description, bookmark }) => (
               <div
                 key={id}
                 className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700 flex flex-col justify-between h-full"
@@ -93,7 +102,9 @@ export default function NoteApp() {
                     }}
                   >
                     <div
-                      className="h-8 w-8 rounded-full bg-gray-500 flex items-center justify-center"
+                      className={`h-8 w-8 rounded-full ${
+                        bookmark ? "bg-green-500" : "bg-gray-500"
+                      } flex items-center justify-center`}
                       title="Bookmark"
                     >
                       <FaRegBookmark className="text-white h-4 w-4" />
