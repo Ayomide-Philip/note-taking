@@ -12,7 +12,9 @@ export default function NoteApp() {
   }, []);
 
   useEffect(() => {
-    console.log(userName);
+    if (userName !== null && userName !== undefined) {
+      localStorage.setItem("noteUserName", userName);
+    }
   }, [userName]);
   return (
     <>
@@ -31,7 +33,11 @@ export default function NoteApp() {
         </div>
 
         <div className="p-6">
-          <h1 className="text-2xl font-bold mb-2">Welcome back 👋</h1>
+          {userName !== undefined && userName !== null ? (
+            <h1 className="text-2xl font-bold mb-2">
+              Welcome back, {userName} 👋
+            </h1>
+          ) : null}
           <p className="text-gray-400 text-sm">
             Here&apos;s a quick look at your notes today.
           </p>
