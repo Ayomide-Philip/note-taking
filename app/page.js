@@ -90,44 +90,44 @@ export default function NoteApp() {
             {notes.map(({ id, heading, description, bookmark }) => (
               <div
                 key={id}
-                className="bg-gray-800 p-5 rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-700 flex flex-col justify-between h-full group"
+                className="relative bg-gray-800/80 backdrop-blur-md border border-gray-700 rounded-2xl p-6 flex flex-col justify-between shadow-md hover:shadow-blue-400/20 hover:scale-[1.015] transition duration-300 h-full"
               >
-                {/* Heading + Bookmark */}
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-lg font-semibold text-white">
+                {/* Floating Bookmark */}
+                <button
+                  onClick={() => bookmarkNote(id)}
+                  title={bookmark ? "Remove Bookmark" : "Add Bookmark"}
+                  className={`absolute top-4 right-4 z-10 ${bookmark? "bg-green-500":"bg-gray-700"} hover:bg-green-700 p-2 rounded-full shadow transition`}
+                >
+                  <FaRegBookmark
+                    className={`h-4 w-4 text-white ${
+                      bookmark ? "fill-white" : ""
+                    }`}
+                  />
+                </button>
+
+                {/* Title */}
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold text-white">
                     {heading}
                   </h3>
-                  <button
-                    className={`transition-colors rounded-full p-1 ${
-                      bookmark ? "bg-green-600" : "bg-gray-600"
-                    } hover:scale-105`}
-                    title={bookmark ? "Remove Bookmark" : "Add Bookmark"}
-                    onClick={() => bookmarkNote(id)}
-                  >
-                    {bookmark ? (
-                      <FaRegBookmark className="h-5 w-5 text-white fill-white" />
-                    ) : (
-                      <FaRegBookmark className="h-5 w-5 text-white" />
-                    )}
-                  </button>
                 </div>
 
                 {/* Description */}
-                <p className="text-sm text-gray-300 flex-grow whitespace-pre-line">
+                <p className="text-gray-300 text-sm whitespace-pre-line flex-grow">
                   {description}
                 </p>
 
-                {/* Edit & Delete */}
-                <div className="mt-5 flex justify-end space-x-4">
+                {/* Footer with actions */}
+                <div className="mt-6 flex justify-end gap-4 border-t border-gray-700 pt-4">
                   <button
-                    className="flex items-center gap-1 text-gray-400 hover:text-green-500 transition-colors text-sm"
+                    className="flex items-center gap-1 text-gray-400 hover:text-green-500 text-sm transition"
                     title="Edit"
                   >
                     <FaEdit className="h-4 w-4" />
                     Edit
                   </button>
                   <button
-                    className="flex items-center gap-1 text-gray-400 hover:text-red-500 transition-colors text-sm"
+                    className="flex items-center gap-1 text-gray-400 hover:text-red-500 text-sm transition"
                     title="Delete"
                   >
                     <FaTrash className="h-4 w-4" />
