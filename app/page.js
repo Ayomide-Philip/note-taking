@@ -27,7 +27,7 @@ export default function NoteApp() {
             <input
               type="text"
               placeholder="Search notes..."
-              className="px-3 py-2 border border-gray-600 bg-gray-900 text-white rounded-md text-sm placeholder-gray-400"
+              className="px-3 py-2 border border-white bg-gray-900 text-white rounded-md text-sm placeholder-gray-400"
             />
           </div>
         </div>
