@@ -55,9 +55,11 @@ export default function NoteApp() {
             bookmark: !note.bookmark,
           };
         }
+        return note;
       });
     });
   }
+
   return (
     <>
       <ToastContainer />
@@ -96,7 +98,9 @@ export default function NoteApp() {
                 <button
                   onClick={() => bookmarkNote(id)}
                   title={bookmark ? "Remove Bookmark" : "Add Bookmark"}
-                  className={`absolute top-4 right-4 z-10 ${bookmark? "bg-green-500":"bg-gray-700"} hover:bg-green-700 p-2 rounded-full shadow transition`}
+                  className={`absolute top-4 right-4 z-10 ${
+                    bookmark ? "bg-green-500" : "bg-gray-700"
+                  } hover:bg-green-700 p-2 rounded-full shadow transition`}
                 >
                   <FaRegBookmark
                     className={`h-4 w-4 text-white ${
