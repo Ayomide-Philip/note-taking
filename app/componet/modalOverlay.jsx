@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 export default function ModalOverLay({ setUserName }) {
   const [inputedUserName, setInputedUserName] = useState("");
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 bg-white/10 backdrop-blur-sm flex items-center justify-center">
       <div className="bg-gray-800 text-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
         <button
           className="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-xl"
