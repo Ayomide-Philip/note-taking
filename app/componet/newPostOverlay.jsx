@@ -2,8 +2,6 @@ import { useState } from "react";
 
 export default function NewPostModal({
   isNewPost,
-  setNewNote,
-  nextId,
   addNewNote,
 }) {
   const [heading, setHeading] = useState("");
