@@ -46,6 +46,9 @@ export default function NoteApp() {
     }
   }, [userName, notes]);
 
+  function bookmarkNote(id) {
+    console.log(id);
+  }
   return (
     <>
       <ToastContainer />
@@ -85,6 +88,9 @@ export default function NoteApp() {
                   <button
                     className="text-gray-400 hover:text-blue-500"
                     title="Bookmark"
+                    onClick={() => {
+                      bookmarkNote(id);
+                    }}
                   >
                     <div
                       className="h-8 w-8 rounded-full bg-gray-500 flex items-center justify-center"
