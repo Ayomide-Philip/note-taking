@@ -9,9 +9,14 @@ export default function NoteApp() {
     const username = localStorage.getItem("noteUserName");
     setUserName(username);
   }, []);
+
+  useEffect(() => {
+    console.log(userName);
+  }, [userName]);
   return (
     <>
-      {/* <ModalOverLay /> */}
+      {userName === null ? <ModalOverLay setUserName={setUserName} /> : null}
+
       <main className="flex-1  flex flex-col lg:ml-64 pt-16 lg:pt-0">
         <div className="p-4  bg-gray-800 shadow-md hidden lg:flex justify-between items-center">
           <h2 className="text-xl font-semibold">All Notes</h2>
