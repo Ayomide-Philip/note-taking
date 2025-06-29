@@ -1,7 +1,7 @@
 export default function NoteApp() {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-gray-900 text-white">
-      {/* Top Nav (only shows on small to medium) */}
+      {/* Top Nav (only on small to medium) */}
       <header className="lg:hidden bg-gray-800 shadow-md p-4 flex justify-between items-center">
         <h1 className="text-xl font-semibold">NotesApp</h1>
         <nav className="flex gap-4 text-sm">
@@ -17,7 +17,8 @@ export default function NoteApp() {
         </nav>
       </header>
 
-      <aside className="hidden lg:block w-64 bg-gray-800 shadow-md">
+      {/* Fixed Sidebar (large screens) */}
+      <aside className="hidden lg:flex fixed top-0 left-0 h-full w-64 bg-gray-800 shadow-md flex-col">
         <div className="p-6 font-bold text-2xl border-b border-gray-700">
           NotesApp
         </div>
@@ -34,7 +35,9 @@ export default function NoteApp() {
         </nav>
       </aside>
 
-      <main className="flex-1 flex flex-col">
+      {/* Main Content (shifted on large screens) */}
+      <main className="flex-1 flex flex-col lg:ml-64">
+        {/* Header */}
         <div className="p-4 bg-gray-800 shadow-md hidden lg:flex justify-between items-center">
           <h2 className="text-xl font-semibold">All Notes</h2>
           <div className="hidden md:block">
@@ -50,7 +53,7 @@ export default function NoteApp() {
         <div className="p-6">
           <h1 className="text-2xl font-bold mb-2">Welcome back 👋</h1>
           <p className="text-gray-400 text-sm">
-            Here&apos;s a quick look at your notes today.
+            Here's a quick look at your notes today.
           </p>
         </div>
 
