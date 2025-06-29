@@ -56,8 +56,70 @@ export default function NoteApp() {
           {[...Array(12)].map((_, i) => (
             <div
               key={i}
-              className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700"
+              className="relative bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700"
             >
+              {/* Action Icons */}
+              <div className="absolute top-3 right-3 flex space-x-2">
+                <button
+                  className="text-gray-400 hover:text-blue-500"
+                  title="Bookmark"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 5v14l7-5 7 5V5z"
+                    />
+                  </svg>
+                </button>
+                <button
+                  className="text-gray-400 hover:text-green-500"
+                  title="Edit"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M11 4h2M12 4v16m9 0H3"
+                    />
+                  </svg>
+                </button>
+                <button
+                  className="text-gray-400 hover:text-red-500"
+                  title="Delete"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Note Content */}
               <h3 className="text-lg font-semibold mb-2">Note Title {i + 1}</h3>
               <p className="text-sm text-gray-400">
                 This is a preview of the note content. It can span multiple
