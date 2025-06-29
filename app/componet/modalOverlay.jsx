@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 export default function ModalOverLay({ setUserName }) {
   const [inputedUserName, setInputedUserName] = useState("");
   return (
@@ -29,7 +30,7 @@ export default function ModalOverLay({ setUserName }) {
             className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium"
             onClick={() => {
               if (inputedUserName.length <= 3) {
-                console.log(true);
+                toast("Your Username should be greater than 3 letters");
               } else {
                 setUserName(inputedUserName);
               }
