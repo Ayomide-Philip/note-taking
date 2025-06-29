@@ -16,7 +16,12 @@ export default function NoteApp() {
     setNotes((prev) => {
       return [
         ...prev,
-        { id: gettingLastIndex() + 1, heading: heading, description: noteBody },
+        {
+          id: gettingLastIndex() + 1,
+          heading: heading,
+          description: noteBody,
+          bookmark: false,
+        },
       ];
     });
   }
@@ -40,6 +45,7 @@ export default function NoteApp() {
       localStorage.setItem("userNotes", JSON.stringify(notes));
     }
   }, [userName, notes]);
+
   return (
     <>
       <ToastContainer />
@@ -89,7 +95,9 @@ export default function NoteApp() {
                   </button>
                 </div>
 
-                <p className="text-sm text-gray-400 flex-grow">{description}</p>
+                <p className="text-sm text-gray-400 flex-grow  whitespace-pre-line">
+                  {description}
+                </p>
 
                 <div className="mt-4 flex justify-end space-x-4">
                   <button
