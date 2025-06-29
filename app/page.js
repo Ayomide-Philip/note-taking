@@ -5,7 +5,26 @@ import { ToastContainer } from "react-toastify";
 import { useState, useEffect } from "react";
 export default function NoteApp() {
   const [userName, setUserName] = useState();
-
+  const [notes, setNotes] = useState([
+    {
+      id: 1,
+      heading: "Note Title",
+      description:
+        " This is a preview of the note content. It can span multiple lines and wrap within the card.",
+    },
+    {
+      id: 2,
+      heading: "Note Title",
+      description:
+        " This is a preview of the note content. It can span multiple lines and wrap within the card.",
+    },
+    {
+      id: 3,
+      heading: "Note Title",
+      description:
+        " This is a preview of the note content. It can span multiple lines and wrap within the card.",
+    },
+  ]);
   useEffect(() => {
     const username = localStorage.getItem("noteUserName");
     setUserName(username);
