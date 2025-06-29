@@ -8,6 +8,8 @@ export default function NoteApp() {
   const [userName, setUserName] = useState();
   const [newPost, isNewPost] = useState(false);
   const [notes, setNotes] = useState([]);
+  const [trash, setTrash] = useState([]);
+
   function gettingLastIndex() {
     return notes.length > 0 ? notes.at(-1).id : 0;
   }
@@ -60,6 +62,15 @@ export default function NoteApp() {
     });
   }
 
+  function deleteNote(userId) {
+    const newTrash = trash.filter((note) => {
+      return note.id === userId;
+    });
+
+    setTrash((prev)=>{
+      return 
+    })
+  }
   return (
     <>
       <ToastContainer />
@@ -153,7 +164,7 @@ export default function NoteApp() {
           </div>
         )}
       </main>
-      
+
       <button
         className="fixed bottom-6 cursor-pointer right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 w-16 h-16 rounded-full shadow-lg text-xl"
         onClick={() => {
