@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,21 +44,27 @@ export default function RootLayout({ children }) {
               NotesApp
             </div>
             <nav className="p-4 space-y-4">
-              <a href="#" className="block px-4 py-2 rounded hover:bg-gray-700">
+              <Link
+                href="/"
+                className="block px-4 py-2 rounded hover:bg-gray-700"
+              >
                 All Notes
-              </a>
-              <a href="#" className="block px-4 py-2 rounded hover:bg-gray-700">
+              </Link>
+              <Link
+                href="#"
+                className="block px-4 py-2 rounded hover:bg-gray-700"
+              >
                 Favorites
-              </a>
-              <a href="#" className="block px-4 py-2 rounded hover:bg-gray-700">
+              </Link>
+              <Link
+                href="#"
+                className="block px-4 py-2 rounded hover:bg-gray-700"
+              >
                 Trash
-              </a>
+              </Link>
             </nav>
           </aside>
           {children}
-          <button className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg text-xl">
-            +
-          </button>
         </div>
       </body>
     </html>
