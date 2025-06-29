@@ -1,4 +1,4 @@
-export default function NewPostModal() {
+export default function NewPostModal({ isNewPost }) {
   return (
     <div className="fixed inset-0 z-50 bg-white/10 backdrop-blur-sm flex items-center justify-center">
       <div className="bg-gray-900 text-white rounded-xl shadow-xl w-full max-w-lg p-6 relative">
@@ -28,7 +28,12 @@ export default function NewPostModal() {
 
         {/* Action Buttons */}
         <div className="mt-6 flex justify-end gap-4">
-          <button className="bg-gray-700 hover:bg-gray-600 px-5 py-2 rounded-md font-medium text-sm">
+          <button
+            className="bg-gray-700 hover:bg-gray-600 px-5 py-2 rounded-md font-medium text-sm"
+            onClick={() => {
+              isNewPost(false);
+            }}
+          >
             Cancel
           </button>
           <button className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-md font-medium text-sm">
