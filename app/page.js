@@ -1,3 +1,5 @@
+import { FaRegBookmark, FaEdit, FaTrash } from "react-icons/fa";
+
 export default function NoteApp() {
   return (
     <div className="min-h-screen flex flex-col lg:flex-row bg-gray-900 text-white">
@@ -56,75 +58,47 @@ export default function NoteApp() {
           {[...Array(12)].map((_, i) => (
             <div
               key={i}
-              className="relative bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700"
+              className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700 flex flex-col justify-between h-full"
             >
-              {/* Action Icons */}
-              <div className="absolute top-3 right-3 flex space-x-2">
+              {/* Title + Bookmark */}
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-lg font-semibold">Note Title {i + 1}</h3>
                 <button
                   className="text-gray-400 hover:text-blue-500"
                   title="Bookmark"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+                  <div
+                    className="h-8 w-8 rounded-full bg-gray-500 flex items-center justify-center"
+                    title="Bookmark"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 5v14l7-5 7 5V5z"
-                    />
-                  </svg>
-                </button>
-                <button
-                  className="text-gray-400 hover:text-green-500"
-                  title="Edit"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M11 4h2M12 4v16m9 0H3"
-                    />
-                  </svg>
-                </button>
-                <button
-                  className="text-gray-400 hover:text-red-500"
-                  title="Delete"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
+                    <FaRegBookmark className="text-white h-4 w-4" />
+                  </div>
                 </button>
               </div>
 
-              {/* Note Content */}
-              <h3 className="text-lg font-semibold mb-2">Note Title {i + 1}</h3>
-              <p className="text-sm text-gray-400">
+              {/* Content */}
+              <p className="text-sm text-gray-400 flex-grow">
                 This is a preview of the note content. It can span multiple
                 lines and wrap within the card.
               </p>
+
+              {/* Edit & Delete Buttons */}
+              <div className="mt-4 flex justify-end space-x-4">
+                <button
+                  className="flex items-center gap-1 text-gray-400 hover:text-green-500 text-sm"
+                  title="Edit"
+                >
+                  <FaEdit className="h-4 w-4" />
+                  Edit
+                </button>
+                <button
+                  className="flex items-center gap-1 text-gray-400 hover:text-red-500 text-sm"
+                  title="Delete"
+                >
+                  <FaTrash className="h-4 w-4" />
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </section>
