@@ -7,26 +7,7 @@ import NewPostModal from "./componet/newPostOverlay";
 export default function NoteApp() {
   const [userName, setUserName] = useState();
   const [newPost, isNewPost] = useState(false);
-  const [notes, setNotes] = useState([
-    {
-      id: 1,
-      heading: "Note Title",
-      description:
-        " This is a preview of the note content. It can span multiple lines and wrap within the card.",
-    },
-    {
-      id: 2,
-      heading: "Note Title",
-      description:
-        " This is a preview of the note content. It can span multiple lines and wrap within the card.",
-    },
-    {
-      id: 3,
-      heading: "Note Title",
-      description:
-        " This is a preview of the note content. It can span multiple lines and wrap within the card.",
-    },
-  ]);
+  const [notes, setNotes] = useState([]);
   function gettingLastIndex() {
     return notes.length > 0 ? notes.at(-1).id : 0;
   }
@@ -42,14 +23,23 @@ export default function NoteApp() {
 
   useEffect(() => {
     const username = localStorage.getItem("noteUserName");
+    const userNotes = localStorage.getItem("userNotes");
     setUserName(username);
+    if (userNotes === null) {
+      setNotes([]);
+    } else {
+      setNotes(JSON.parse(userNotes));
+    }
   }, []);
 
   useEffect(() => {
     if (userName !== null && userName !== undefined) {
       localStorage.setItem("noteUserName", userName);
     }
-  }, [userName]);
+    if (notes.length > 0) {
+      localStorage.setItem("userNotes", JSON.stringify(notes));
+    }
+  }, [userName, notes]);
   return (
     <>
       <ToastContainer />
@@ -77,48 +67,60 @@ export default function NoteApp() {
           </p>
         </div>
 
-        <section className="p-6 pt-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {notes.map(({ id, heading, description }) => (
-            <div
-              key={id}
-              className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700 flex flex-col justify-between h-full"
-            >
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-semibold">{heading}</h3>
-                <button
-                  className="text-gray-400 hover:text-blue-500"
-                  title="Bookmark"
-                >
-                  <div
-                    className="h-8 w-8 rounded-full bg-gray-500 flex items-center justify-center"
+        {notes.length > 0 ? (
+          <section className="p-6 pt-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {notes.map(({ id, heading, description }) => (
+              <div
+                key={id}
+                className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700 flex flex-col justify-between h-full"
+              >
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-lg font-semibold">{heading}</h3>
+                  <button
+                    className="text-gray-400 hover:text-blue-500"
                     title="Bookmark"
                   >
-                    <FaRegBookmark className="text-white h-4 w-4" />
-                  </div>
-                </button>
-              </div>
+                    <div
+                      className="h-8 w-8 rounded-full bg-gray-500 flex items-center justify-center"
+                      title="Bookmark"
+                    >
+                      <FaRegBookmark className="text-white h-4 w-4" />
+                    </div>
+                  </button>
+                </div>
 
-              <p className="text-sm text-gray-400 flex-grow">{description}</p>
+                <p className="text-sm text-gray-400 flex-grow">{description}</p>
 
-              <div className="mt-4 flex justify-end space-x-4">
-                <button
-                  className="flex items-center gap-1 text-gray-400 hover:text-green-500 text-sm"
-                  title="Edit"
-                >
-                  <FaEdit className="h-4 w-4" />
-                  Edit
-                </button>
-                <button
-                  className="flex items-center gap-1 text-gray-400 hover:text-red-500 text-sm"
-                  title="Delete"
-                >
-                  <FaTrash className="h-4 w-4" />
-                  Delete
-                </button>
+                <div className="mt-4 flex justify-end space-x-4">
+                  <button
+                    className="flex items-center gap-1 text-gray-400 hover:text-green-500 text-sm"
+                    title="Edit"
+                  >
+                    <FaEdit className="h-4 w-4" />
+                    Edit
+                  </button>
+                  <button
+                    className="flex items-center gap-1 text-gray-400 hover:text-red-500 text-sm"
+                    title="Delete"
+                  >
+                    <FaTrash className="h-4 w-4" />
+                    Delete
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-        </section>
+            ))}
+          </section>
+        ) : (
+          <div className="p-6 flex flex-col items-center justify-center text-center text-gray-400">
+            <div className="text-5xl mb-4">📝</div>
+            <h2 className="text-xl font-semibold mb-2">No Notes Yet</h2>
+            <p className="text-sm">
+              You haven&apos;t written any notes yet. Click the{" "}
+              <span className="text-blue-400 font-medium">+ button</span> to add
+              your first note.
+            </p>
+          </div>
+        )}
       </main>
       <button
         className="fixed bottom-6 cursor-pointer right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 w-16 h-16 rounded-full shadow-lg text-xl"
