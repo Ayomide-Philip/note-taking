@@ -52,7 +52,6 @@ export default function NoteApp() {
           </p>
         </div>
 
-        {/* Notes Area */}
         <section className="p-6 pt-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[...Array(12)].map((_, i) => (
             <div
@@ -69,7 +68,6 @@ export default function NoteApp() {
         </section>
       </main>
 
-      {/* Floating Add Button */}
       <button className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg text-xl">
         +
       </button>
