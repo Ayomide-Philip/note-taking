@@ -1,0 +1,41 @@
+export default function NewPostModal() {
+  return (
+    <div className="fixed inset-0 z-50 bg-white/10 backdrop-blur-sm flex items-center justify-center">
+      <div className="bg-gray-900 text-white rounded-xl shadow-xl w-full max-w-lg p-6 relative">
+        {/* Close Button */}
+        <button
+          className="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl"
+          title="Close"
+        >
+          &times;
+        </button>
+
+        {/* Header */}
+        <h2 className="text-2xl font-semibold mb-6">Create a New Post</h2>
+
+        {/* Heading Input */}
+        <input
+          type="text"
+          placeholder="Post Title"
+          className="w-full mb-4 px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        {/* Post Textarea */}
+        <textarea
+          placeholder="What's on your mind?"
+          className="w-full h-32 px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+        />
+
+        {/* Action Buttons */}
+        <div className="mt-6 flex justify-end gap-4">
+          <button className="bg-gray-700 hover:bg-gray-600 px-5 py-2 rounded-md font-medium text-sm">
+            Cancel
+          </button>
+          <button className="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-md font-medium text-sm">
+            Post
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
