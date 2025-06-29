@@ -1,6 +1,7 @@
 "use client";
 import { FaRegBookmark, FaEdit, FaTrash } from "react-icons/fa";
 import ModalOverLay from "./componet/modalOverlay";
+import { ToastContainer, toast } from "react-toastify";
 import { useState, useEffect } from "react";
 export default function NoteApp() {
   const [userName, setUserName] = useState();
@@ -15,8 +16,8 @@ export default function NoteApp() {
   }, [userName]);
   return (
     <>
+      <ToastContainer />
       {userName === null ? <ModalOverLay setUserName={setUserName} /> : null}
-
       <main className="flex-1  flex flex-col lg:ml-64 pt-16 lg:pt-0">
         <div className="p-4  bg-gray-800 shadow-md hidden lg:flex justify-between items-center">
           <h2 className="text-xl font-semibold">All Notes</h2>
