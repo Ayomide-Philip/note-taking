@@ -1,4 +1,6 @@
-export default function ModalOverLay() {
+import { useState } from "react";
+export default function ModalOverLay({ setUserName }) {
+  const [inputedUserName, setInputedUserName] = useState("");
   return (
     <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center">
       <div className="bg-gray-800 text-white rounded-xl shadow-lg w-full max-w-md p-6 relative">
@@ -17,10 +19,21 @@ export default function ModalOverLay() {
           type="text"
           placeholder="e.g. johndoe"
           className="w-full px-4 py-2 rounded-md bg-gray-700 text-white border border-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          onChange={(e) => {
+            setInputedUserName(e.target.value);
+          }}
         />
 
         <div className="mt-6 flex justify-end">
-          <button className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium">
+          <button
+            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium"
+            onClick={() => {
+              if (inputedUserName.length <= 3) {
+                console.log(true);
+              }
+              setUserName(inputedUserName);
+            }}
+          >
             Confirm
           </button>
         </div>
