@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-export default function NewPostModal({ isNewPost, setNewNote, nextId }) {
+export default function NewPostModal({
+  isNewPost,
+  setNewNote,
+  nextId,
+  addNewNote,
+}) {
   const [heading, setHeading] = useState("");
   const [noteBody, setNoteBody] = useState("");
   return (
@@ -44,7 +49,13 @@ export default function NewPostModal({ isNewPost, setNewNote, nextId }) {
           >
             Cancel
           </button>
-          <button className="bg-blue-600 hover:bg-blue-700 px-5 py-2 cursor-pointer rounded-md font-medium text-sm">
+          <button
+            className="bg-blue-600 hover:bg-blue-700 px-5 py-2 cursor-pointer rounded-md font-medium text-sm"
+            onClick={() => {
+              addNewNote(heading, noteBody);
+              isNewPost(false);
+            }}
+          >
             Post
           </button>
         </div>
