@@ -1,7 +1,14 @@
+"use client";
 import { FaRegBookmark, FaEdit, FaTrash } from "react-icons/fa";
 import ModalOverLay from "./componet/modalOverlay";
-
+import { useState, useEffect } from "react";
 export default function NoteApp() {
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    const username = localStorage.getItem("noteUserName");
+    setUserName(username);
+  }, []);
   return (
     <>
       {/* <ModalOverLay /> */}
