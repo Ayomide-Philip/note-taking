@@ -1,4 +1,8 @@
-export default function NewPostModal({ isNewPost }) {
+import { useState } from "react";
+
+export default function NewPostModal({ isNewPost, setNewNote }) {
+  const [heading, setHeading] = useState("");
+  const [noteBody, setNoteBody] = useState("");
   return (
     <div className="fixed inset-0 z-50 bg-white/10 backdrop-blur-sm flex items-center justify-center">
       <div className="bg-gray-900 text-white rounded-xl shadow-xl w-full max-w-lg p-6 relative">
