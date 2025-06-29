@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import NewPostModal from "./componet/newPostOverlay";
 export default function NoteApp() {
   const [userName, setUserName] = useState();
+  const [newPost, isNewPost] = useState(false);
   const [notes, setNotes] = useState([
     {
       id: 1,
@@ -26,7 +27,7 @@ export default function NoteApp() {
         " This is a preview of the note content. It can span multiple lines and wrap within the card.",
     },
   ]);
-  const [newPost, isNewPost] = useState(false);
+
   useEffect(() => {
     const username = localStorage.getItem("noteUserName");
     setUserName(username);
