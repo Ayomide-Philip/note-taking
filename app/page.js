@@ -68,7 +68,6 @@ export default function NoteApp() {
               key={i}
               className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700 flex flex-col justify-between h-full"
             >
-              {/* Title + Bookmark */}
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-lg font-semibold">Note Title {i + 1}</h3>
                 <button
@@ -84,13 +83,11 @@ export default function NoteApp() {
                 </button>
               </div>
 
-              {/* Content */}
               <p className="text-sm text-gray-400 flex-grow">
                 This is a preview of the note content. It can span multiple
                 lines and wrap within the card.
               </p>
 
-              {/* Edit & Delete Buttons */}
               <div className="mt-4 flex justify-end space-x-4">
                 <button
                   className="flex items-center gap-1 text-gray-400 hover:text-green-500 text-sm"
