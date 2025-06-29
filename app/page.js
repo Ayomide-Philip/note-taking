@@ -90,42 +90,44 @@ export default function NoteApp() {
             {notes.map(({ id, heading, description, bookmark }) => (
               <div
                 key={id}
-                className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700 flex flex-col justify-between h-full"
+                className="bg-gray-800 p-5 rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-700 flex flex-col justify-between h-full group"
               >
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-semibold">{heading}</h3>
+                {/* Heading + Bookmark */}
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="text-lg font-semibold text-white">
+                    {heading}
+                  </h3>
                   <button
-                    className="text-gray-400 hover:text-blue-500"
-                    title="Bookmark"
-                    onClick={() => {
-                      bookmarkNote(id);
-                    }}
+                    className={`transition-colors rounded-full p-1 ${
+                      bookmark ? "bg-green-600" : "bg-gray-600"
+                    } hover:scale-105`}
+                    title={bookmark ? "Remove Bookmark" : "Add Bookmark"}
+                    onClick={() => bookmarkNote(id)}
                   >
-                    <div
-                      className={`h-8 w-8 rounded-full ${
-                        bookmark ? "bg-green-500" : "bg-gray-500"
-                      } flex items-center justify-center`}
-                      title="Bookmark"
-                    >
-                      <FaRegBookmark className="text-white h-4 w-4" />
-                    </div>
+                    {bookmark ? (
+                      <FaRegBookmark className="h-5 w-5 text-white fill-white" />
+                    ) : (
+                      <FaRegBookmark className="h-5 w-5 text-white" />
+                    )}
                   </button>
                 </div>
 
-                <p className="text-sm text-gray-400 flex-grow  whitespace-pre-line">
+                {/* Description */}
+                <p className="text-sm text-gray-300 flex-grow whitespace-pre-line">
                   {description}
                 </p>
 
-                <div className="mt-4 flex justify-end space-x-4">
+                {/* Edit & Delete */}
+                <div className="mt-5 flex justify-end space-x-4">
                   <button
-                    className="flex items-center gap-1 text-gray-400 hover:text-green-500 text-sm"
+                    className="flex items-center gap-1 text-gray-400 hover:text-green-500 transition-colors text-sm"
                     title="Edit"
                   >
                     <FaEdit className="h-4 w-4" />
                     Edit
                   </button>
                   <button
-                    className="flex items-center gap-1 text-gray-400 hover:text-red-500 text-sm"
+                    className="flex items-center gap-1 text-gray-400 hover:text-red-500 transition-colors text-sm"
                     title="Delete"
                   >
                     <FaTrash className="h-4 w-4" />
