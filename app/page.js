@@ -3,6 +3,7 @@ import { FaRegBookmark, FaEdit, FaTrash } from "react-icons/fa";
 import ModalOverLay from "./componet/modalOverlay";
 import { ToastContainer } from "react-toastify";
 import { useState, useEffect } from "react";
+import NewPostModal from "./componet/newPostOverlay";
 export default function NoteApp() {
   const [userName, setUserName] = useState();
   const [notes, setNotes] = useState([
@@ -25,6 +26,7 @@ export default function NoteApp() {
         " This is a preview of the note content. It can span multiple lines and wrap within the card.",
     },
   ]);
+  const [newPost, isNewPost] = useState(false);
   useEffect(() => {
     const username = localStorage.getItem("noteUserName");
     setUserName(username);
@@ -105,10 +107,15 @@ export default function NoteApp() {
           ))}
         </section>
       </main>
-      <button className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 w-16 h-16 rounded-full shadow-lg text-xl">
+      <button
+        className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 w-16 h-16 rounded-full shadow-lg text-xl"
+        onClick={() => {
+          isNewPost(true);
+        }}
+      >
         +
       </button>
-      
+      {newPost ? <NewPostModal isNewPost={isNewPost} /> : null}
     </>
   );
 }
