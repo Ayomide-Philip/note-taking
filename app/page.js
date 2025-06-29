@@ -17,7 +17,6 @@ export default function NoteApp() {
         </nav>
       </header>
 
-      {/* Sidebar (only shows on large and up) */}
       <aside className="hidden lg:block w-64 bg-gray-800 shadow-md">
         <div className="p-6 font-bold text-2xl border-b border-gray-700">
           NotesApp
@@ -35,9 +34,7 @@ export default function NoteApp() {
         </nav>
       </aside>
 
-      {/* Main Content */}
       <main className="flex-1 flex flex-col">
-        {/* Header */}
         <div className="p-4 bg-gray-800 shadow-md hidden lg:flex justify-between items-center">
           <h2 className="text-xl font-semibold">All Notes</h2>
           <div className="hidden md:block">
@@ -49,9 +46,17 @@ export default function NoteApp() {
           </div>
         </div>
 
+        {/* Welcome Message */}
+        <div className="p-6">
+          <h1 className="text-2xl font-bold mb-2">Welcome back 👋</h1>
+          <p className="text-gray-400 text-sm">
+            Here&apos;s a quick look at your notes today.
+          </p>
+        </div>
+
         {/* Notes Area */}
-        <section className="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[...Array(6)].map((_, i) => (
+        <section className="p-6 pt-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[...Array(12)].map((_, i) => (
             <div
               key={i}
               className="bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-200 border border-gray-700"
