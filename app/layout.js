@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
           
           {/* Top Nav for Mobile */}
           <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-gray-800 shadow-md px-6 py-4 flex justify-between items-center border-b border-gray-700 mb-24">
-            <h1 className="text-xl font-bold tracking-wide">📝 NotesApp</h1>
+            <h1 className="font-bold text-sm tracking-wide">📝 NotesApp</h1>
             <nav className="flex gap-4 text-sm font-medium">
               <a href="#" className="hover:text-blue-400 transition-colors">All</a>
               <a href="#" className="hover:text-blue-400 transition-colors">Favorites</a>
