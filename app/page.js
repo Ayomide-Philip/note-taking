@@ -102,7 +102,7 @@ export default function NoteApp() {
       });
     });
   }
-  
+
   return (
     <>
       <ToastContainer />
@@ -145,8 +145,6 @@ export default function NoteApp() {
                       return p.id === id;
                     });
                     if (filtered.bookmark) {
-                      console.log(filtered.bookmark);
-
                       toast("Bookmark sucessfully removed");
                     } else {
                       toast("Added to bookmark sucessfully");
