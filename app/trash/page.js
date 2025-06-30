@@ -1,5 +1,12 @@
 "use client";
+import { useState, useEffect } from "react";
 export default function Page() {
+  const [trash, setTrash] = useState([]);
+
+  useEffect(() => {
+    const savedTrash = localStorage.getItem("trash");
+    setTrash(savedTrash ? JSON.parse(savedTrash) : []);
+  }, []);
   return (
     <main className="mt-10 sm:mt-0 flex-1 flex flex-col lg:ml-64 pt-10 lg:pt-0 pb-20 sm:pb-5">
       <div className="p-4 bg-gray-800 shadow-md hidden lg:flex justify-between items-center">

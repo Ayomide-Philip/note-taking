@@ -20,16 +20,29 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <div className="min-h-screen flex flex-col lg:flex-row bg-gray-900 text-white font-sans">
-          
           {/* Top Nav for Mobile */}
           <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-gray-800 shadow-md px-6 py-4 flex justify-between items-center border-b border-gray-700 mb-24">
             <h1 className="font-bold text-sm tracking-wide">📝 NotesApp</h1>
             <nav className="flex gap-4 text-sm font-medium">
-              <a href="#" className="hover:text-blue-400 transition-colors">All</a>
-              <a href="#" className="hover:text-blue-400 transition-colors">Favorites</a>
-              <a href="#" className="hover:text-blue-400 transition-colors">Trash</a>
+              <Link href="/" className="hover:text-blue-400 transition-colors">
+                All
+              </Link>
+              <Link
+                href="/favourite"
+                className="hover:text-blue-400 transition-colors"
+              >
+                Favorites
+              </Link>
+              <Link
+                href="/trash"
+                className="hover:text-blue-400 transition-colors"
+              >
+                Trash
+              </Link>
             </nav>
           </header>
 
@@ -46,13 +59,13 @@ export default function RootLayout({ children }) {
                 All Notes
               </Link>
               <Link
-                href="#"
+                href="/favourite"
                 className="px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
               >
                 Favorites
               </Link>
               <Link
-                href="#"
+                href="/trash"
                 className="px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors"
               >
                 Trash
