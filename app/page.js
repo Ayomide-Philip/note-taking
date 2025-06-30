@@ -1,7 +1,7 @@
 "use client";
 import { FaRegBookmark, FaEdit, FaTrash } from "react-icons/fa";
 import ModalOverLay from "./componet/modalOverlay";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useState, useEffect } from "react";
 import NewPostModal from "./componet/newPostOverlay";
 export default function NoteApp() {
@@ -9,7 +9,7 @@ export default function NoteApp() {
   const [newPost, isNewPost] = useState(false);
   const [notes, setNotes] = useState([]);
   const [trash, setTrash] = useState([]);
-  
+
   useEffect(() => {
     const username = localStorage.getItem("noteUserName");
     const userNotes = localStorage.getItem("userNotes");
@@ -49,6 +49,7 @@ export default function NoteApp() {
         },
       ];
     });
+    toast("New Note Added Sucessfully.");
   }
 
   function bookmarkNote(userId) {
@@ -80,6 +81,7 @@ export default function NoteApp() {
         return note.id !== userId;
       });
     });
+    toast("Note moved to trash sucessfully.");
   }
   return (
     <>
