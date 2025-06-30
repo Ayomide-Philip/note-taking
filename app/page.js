@@ -12,7 +12,7 @@ export default function NoteApp() {
   const [notes, setNotes] = useState([]);
   const [trash, setTrash] = useState([]);
   const [edittingDetails, setEdittingDetails] = useState();
-  const [editedValue, setEditedValue] = useState();
+
   useEffect(() => {
     const username = localStorage.getItem("noteUserName");
     const userNotes = localStorage.getItem("userNotes");
@@ -87,9 +87,22 @@ export default function NoteApp() {
     toast("Note moved to trash sucessfully.");
   }
 
-  function edittingUserNote(heading, description) {
-    console.log(heading, description);
+  function edittingUserNote({ id, heading, description, bookmark }) {
+    setNotes((prev) => {
+      return prev.map((note) => {
+        if (note.id === id) {
+          return {
+            ...note,
+            heading: heading,
+            description: description,
+            bookmark: bookmark,
+          };
+        }
+        return note;
+      });
+    });
   }
+  
   return (
     <>
       <ToastContainer />
