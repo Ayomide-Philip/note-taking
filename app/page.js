@@ -4,11 +4,14 @@ import ModalOverLay from "./componet/modalOverlay";
 import { toast, ToastContainer } from "react-toastify";
 import { useState, useEffect } from "react";
 import NewPostModal from "./componet/newPostOverlay";
+import Edit from "./componet/edit";
 export default function NoteApp() {
   const [userName, setUserName] = useState();
   const [newPost, isNewPost] = useState(false);
+  const [editting, setEditting] = useState(false);
   const [notes, setNotes] = useState([]);
   const [trash, setTrash] = useState([]);
+  const [edittingDetails, setEdittingDetails] = useState();
 
   useEffect(() => {
     const username = localStorage.getItem("noteUserName");
@@ -161,6 +164,15 @@ export default function NoteApp() {
                   <button
                     className="flex items-center gap-1 text-gray-400 hover:text-green-500 text-sm transition"
                     title="Edit"
+                    onClick={() => {
+                      setEdittingDetails(() => {
+                        return notes.find((n) => {
+                          return n.id === id;
+                        });
+                      });
+
+                      setEditting(true);
+                    }}
                   >
                     <FaEdit className="h-4 w-4" />
                     Edit
@@ -202,6 +214,9 @@ export default function NoteApp() {
       </button>
       {newPost ? (
         <NewPostModal isNewPost={isNewPost} addNewNote={addNewNote} />
+      ) : null}
+      {editting ? (
+        <Edit setEditting={setEditting} edittingDetails={edittingDetails} />
       ) : null}
     </>
   );
