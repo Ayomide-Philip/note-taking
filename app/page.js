@@ -71,7 +71,8 @@ export default function NoteApp() {
     });
 
     setTrash((prev) => {
-      return [...prev, newTrash];
+      const newId = prev.length === 0 ? 0 : prev.at(-1).id;
+      return [...prev, { ...newTrash, id: newId + 1 }];
     });
 
     setNotes((prev) => {
