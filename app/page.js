@@ -170,7 +170,6 @@ export default function NoteApp() {
                           return n.id === id;
                         });
                       });
-
                       setEditting(true);
                     }}
                   >
