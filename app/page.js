@@ -85,7 +85,7 @@ export default function NoteApp() {
     <>
       <ToastContainer />
       {userName === null ? <ModalOverLay setUserName={setUserName} /> : null}
-      <main className="flex-1  flex flex-col lg:ml-64 pt-16 lg:pt-0">
+      <main className="mt-10 sm:mt-0 flex-1  flex flex-col lg:ml-64 pt-16 lg:pt-0">
         <div className="p-4  bg-gray-800 shadow-md hidden lg:flex justify-between items-center">
           <h2 className="text-xl font-semibold">All Notes</h2>
           <div className="hidden md:block">
