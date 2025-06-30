@@ -127,7 +127,7 @@ export default function NoteApp() {
             {notes.map(({ id, heading, description, bookmark }) => (
               <div
                 key={id}
-                className="relative bg-gray-800/80 backdrop-blur-md border border-gray-700 rounded-2xl p-6 flex flex-col justify-between shadow-md hover:shadow-blue-400/20 hover:scale-[1.015] transition duration-300"
+                className="relative bg-gray-800/80 backdrop-blur-md border border-gray-700 rounded-2xl p-6 flex flex-col justify-between shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out"
               >
                 {/* Floating Bookmark */}
                 <button
@@ -143,13 +143,13 @@ export default function NoteApp() {
                   title={bookmark ? "Remove Bookmark" : "Add Bookmark"}
                   className={`absolute top-4 right-4 z-10 ${
                     bookmark ? "bg-green-500" : "bg-gray-700"
-                  } hover:bg-green-600 p-2 rounded-full shadow transition`}
+                  } hover:bg-green-600 p-2 rounded-full shadow-md transition-all`}
                 >
                   <FaRegBookmark className="h-4 w-4 text-white" />
                 </button>
 
                 {/* Title */}
-                <h3 className="text-xl font-semibold text-white mb-3">
+                <h3 className="text-xl font-semibold text-white mb-3 tracking-tight">
                   {heading}
                 </h3>
 
@@ -159,7 +159,7 @@ export default function NoteApp() {
                 </p>
 
                 {/* Actions */}
-                <div className="mt-6 flex justify-end gap-4 border-t border-gray-700 pt-4">
+                <div className="mt-6 flex justify-between items-center gap-4 border-t border-gray-700 pt-4">
                   <button
                     className="flex items-center gap-1 text-gray-400 hover:text-green-500 text-sm transition"
                     title="Edit"
