@@ -12,7 +12,7 @@ export default function NoteApp() {
   const [notes, setNotes] = useState([]);
   const [trash, setTrash] = useState([]);
   const [edittingDetails, setEdittingDetails] = useState();
-
+  const [editedValue, setEditedValue] = useState();
   useEffect(() => {
     const username = localStorage.getItem("noteUserName");
     const userNotes = localStorage.getItem("userNotes");
@@ -85,6 +85,10 @@ export default function NoteApp() {
       });
     });
     toast("Note moved to trash sucessfully.");
+  }
+
+  function edittingUserNote(heading, description) {
+    console.log(heading, description);
   }
   return (
     <>
@@ -215,7 +219,11 @@ export default function NoteApp() {
         <NewPostModal isNewPost={isNewPost} addNewNote={addNewNote} />
       ) : null}
       {editting ? (
-        <Edit setEditting={setEditting} edittingDetails={edittingDetails} />
+        <Edit
+          setEditting={setEditting}
+          edittingDetails={edittingDetails}
+          edittingUserNote={edittingUserNote}
+        />
       ) : null}
     </>
   );
