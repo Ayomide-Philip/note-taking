@@ -1,9 +1,12 @@
 import { useState } from "react";
 
-export default function Edit({ setEditting, edittingDetails }) {
+export default function Edit({
+  setEditting,
+  edittingDetails,
+  edittingUserNote,
+}) {
   const [heading, setHeading] = useState(edittingDetails.heading);
   const [noteBody, setNoteBody] = useState(edittingDetails.description);
-  console.log(edittingDetails);
 
   return (
     <div className="fixed inset-0 z-50 bg-white/10 backdrop-blur-sm flex items-center justify-center">
@@ -51,8 +54,8 @@ export default function Edit({ setEditting, edittingDetails }) {
           <button
             className="bg-blue-600 hover:bg-blue-700 px-5 py-2 cursor-pointer rounded-md font-medium text-sm"
             onClick={() => {
-              addNewNote(heading, noteBody);
-              isNewPost(false);
+              edittingUserNote(heading, noteBody);
+              setEditting(false);
             }}
           >
             Post
