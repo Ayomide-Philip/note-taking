@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Edit({
   setEditting,
@@ -62,6 +63,7 @@ export default function Edit({
               };
               edittingUserNote(edittedNote);
               setEditting(false);
+              toast("Editted Sucessfully 🎉🎉🎉");
             }}
           >
             Post
