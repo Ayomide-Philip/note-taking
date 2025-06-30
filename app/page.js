@@ -119,7 +119,19 @@ export default function NoteApp() {
               >
                 {/* Floating Bookmark */}
                 <button
-                  onClick={() => bookmarkNote(id)}
+                  onClick={() => {
+                    bookmarkNote(id);
+                    const filtered = notes.find((p) => {
+                      return p.id === id;
+                    });
+                    if (filtered.bookmark) {
+                      console.log(filtered.bookmark);
+
+                      toast("Bookmark sucessfully removed");
+                    } else {
+                      toast("Added to bookmark sucessfully");
+                    }
+                  }}
                   title={bookmark ? "Remove Bookmark" : "Add Bookmark"}
                   className={`absolute top-4 right-4 z-10 ${
                     bookmark ? "bg-green-500" : "bg-gray-700"
