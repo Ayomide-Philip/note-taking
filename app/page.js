@@ -9,25 +9,7 @@ export default function NoteApp() {
   const [newPost, isNewPost] = useState(false);
   const [notes, setNotes] = useState([]);
   const [trash, setTrash] = useState([]);
-
-  function gettingLastIndex() {
-    return notes.length > 0 ? notes.at(-1).id : 0;
-  }
-
-  function addNewNote(heading, noteBody) {
-    setNotes((prev) => {
-      return [
-        ...prev,
-        {
-          id: gettingLastIndex() + 1,
-          heading: heading,
-          description: noteBody,
-          bookmark: false,
-        },
-      ];
-    });
-  }
-
+  
   useEffect(() => {
     const username = localStorage.getItem("noteUserName");
     const userNotes = localStorage.getItem("userNotes");
@@ -50,6 +32,24 @@ export default function NoteApp() {
       localStorage.setItem("trash", JSON.stringify(trash));
     }
   }, [userName, notes, trash]);
+
+  function gettingLastIndex() {
+    return notes.length > 0 ? notes.at(-1).id : 0;
+  }
+
+  function addNewNote(heading, noteBody) {
+    setNotes((prev) => {
+      return [
+        ...prev,
+        {
+          id: gettingLastIndex() + 1,
+          heading: heading,
+          description: noteBody,
+          bookmark: false,
+        },
+      ];
+    });
+  }
 
   function bookmarkNote(userId) {
     setNotes((prev) => {
