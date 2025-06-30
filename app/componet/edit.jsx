@@ -21,7 +21,7 @@ export default function Edit({
           &times;
         </button>
 
-        <h2 className="text-2xl font-semibold mb-6">Create a New Note:</h2>
+        <h2 className="text-2xl font-semibold mb-6">Edit your Note:</h2>
 
         <input
           type="text"
@@ -54,7 +54,13 @@ export default function Edit({
           <button
             className="bg-blue-600 hover:bg-blue-700 px-5 py-2 cursor-pointer rounded-md font-medium text-sm"
             onClick={() => {
-              edittingUserNote(heading, noteBody);
+              const edittedNote = {
+                id: edittingDetails.id,
+                heading: heading,
+                description: noteBody,
+                bookmark: edittingDetails.bookmark,
+              };
+              edittingUserNote(edittedNote);
               setEditting(false);
             }}
           >
