@@ -66,7 +66,7 @@ export default function Edit({
               toast("Editted Sucessfully 🎉🎉🎉");
             }}
           >
-            Post
+            Edit
           </button>
         </div>
       </div>
