@@ -1,8 +1,10 @@
 import { useState } from "react";
 
-export default function Edit({ setEditting }) {
-  const [heading, setHeading] = useState("");
-  const [noteBody, setNoteBody] = useState("");
+export default function Edit({ setEditting, edittingDetails }) {
+  const [heading, setHeading] = useState(edittingDetails.heading);
+  const [noteBody, setNoteBody] = useState(edittingDetails.description);
+  console.log(edittingDetails);
+
   return (
     <div className="fixed inset-0 z-50 bg-white/10 backdrop-blur-sm flex items-center justify-center">
       <div className="bg-gray-900 text-white rounded-xl shadow-xl w-full max-w-lg p-6 relative">
@@ -22,6 +24,7 @@ export default function Edit({ setEditting }) {
           type="text"
           placeholder="Note Title"
           className="w-full mb-4 px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          value={heading}
           onChange={(e) => {
             setHeading(e.target.value);
           }}
@@ -30,6 +33,7 @@ export default function Edit({ setEditting }) {
         <textarea
           placeholder="What's on your mind?"
           className="w-full h-32 px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          value={noteBody}
           onChange={(e) => {
             setNoteBody(e.target.value);
           }}
