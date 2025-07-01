@@ -1,9 +1,7 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
-export default function NewPostModal({
-  isNewPost,
-  addNewNote,
-}) {
+export default function NewPostModal({ isNewPost, addNewNote }) {
   const [heading, setHeading] = useState("");
   const [noteBody, setNoteBody] = useState("");
   return (
