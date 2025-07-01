@@ -14,14 +14,13 @@ export default function NoteApp() {
   const [edittingDetails, setEdittingDetails] = useState();
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const username = localStorage.getItem("noteUserName");
-      const userNotes = localStorage.getItem("userNotes");
-      const trashNotes = localStorage.getItem("trash");
-
-      if (username) setUserName(username);
-      if (userNotes) setNotes(JSON.parse(userNotes));
-      if (trashNotes) setTrash(JSON.parse(trashNotes));
+    const username = localStorage.getItem("noteUserName");
+    const note = localStorage.getItem("userNotes");
+    setUserName(username);
+    if (note === null) {
+      setNotes([]);
+    } else {
+      setNotes(JSON.parse(note));
     }
   }, []);
 
