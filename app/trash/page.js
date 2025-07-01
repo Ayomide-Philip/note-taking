@@ -20,7 +20,7 @@ export default function TrashPage() {
     if (userNote !== null) {
       localStorage.setItem("userNotes", JSON.stringify(userNote));
     }
-    if (userTrash !== null) {
+    if (userNote !== null) {
       localStorage.setItem("trash", JSON.stringify(userTrash));
     }
   }, [userNote, userTrash]);
@@ -29,12 +29,10 @@ export default function TrashPage() {
     const restoredNote = userTrash.find((trash) => {
       return trash.id === id;
     });
+    const updatedTrash = userTrash.filter((trash) => trash.id !== id);
+    console.log(updatedTrash);
 
-    const remainingTrashItem = userTrash.find((trash) => {
-      return trash.id !== id;
-    });
-
-    setUserTrash(remainingTrashItem === undefined ? [] : remainingTrashItem);
+    setUserTrash(updatedTrash);
 
     const lastNoteId = userNote.at(-1) !== undefined ? userNote.at(-1).id : 0;
 
@@ -46,6 +44,14 @@ export default function TrashPage() {
     };
     setUserNote((prev) => {
       return [...prev, newNote];
+    });
+  }
+
+  function permanentlyDeleteNote(id) {
+    setUserTrash((prev) => {
+      return prev.filter((p) => {
+        return p.id !== id;
+      });
     });
   }
 
