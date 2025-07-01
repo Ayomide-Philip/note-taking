@@ -16,6 +16,30 @@ export default function TrashPage() {
     }
   }, []);
 
+  useEffect(() => {
+    if (userNote !== null) {
+      localStorage.setItem("userNotes", JSON.stringify(userNote));
+    }
+  }, [userNote]);
+
+  function restoreNote(id) {
+    const restoredNote = userTrash.find((trash) => {
+      return trash.id === id;
+    });
+
+    const lastNoteId = userNote.at(-1) !== undefined ? userNote.at(-1).id : 0;
+
+    const newNote = {
+      id: lastNoteId + 1,
+      heading: restoredNote.heading,
+      description: restoredNote.description,
+      bookmark: restoredNote.bookmark,
+    };
+    setUserNote((prev) => {
+      return [...prev, newNote];
+    });
+  }
+
   return (
     <main className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-2">
       <h2 className="text-2xl font-bold mb-6 text-white">🗑️ Trash</h2>
