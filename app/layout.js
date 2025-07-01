@@ -2,7 +2,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
-import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,12 +26,15 @@ export default function RootLayout({ children }) {
       >
         <div className="min-h-screen flex flex-col">
           {/* Navbar */}
-          <nav className="w-full bg-gray-900/80 border-b border-gray-700 shadow-inner backdrop-blur-md">
+          <nav className="w-full bg-gray-900/90 backdrop-blur-md border-b border-gray-700 shadow">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-              <h1 className="text-lg sm:text-xl font-bold tracking-tight text-white">
-                📝 NoteApp
-              </h1>
-              <div className="flex gap-6 text-sm font-medium text-gray-400">
+              {/* Logo */}
+              <div className="text-md sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                📝 <span>NoteApp</span>
+              </div>
+
+              {/* Navigation Links */}
+              <div className="flex gap-6 text-sm font-medium text-gray-300">
                 <a href="/" className="hover:text-blue-400 transition-colors">
                   Home
                 </a>
@@ -52,7 +54,7 @@ export default function RootLayout({ children }) {
             </div>
           </nav>
 
-          {/* Page Content */}
+          {/* Main Content */}
           <main className="w-full max-w-6xl mx-auto flex-1 px-4 sm:px-6 pt-6 pb-10">
             {children}
             <Analytics />
