@@ -14,13 +14,14 @@ export default function NoteApp() {
   const [edittingDetails, setEdittingDetails] = useState();
 
   useEffect(() => {
-    const username = localStorage.getItem("noteUserName");
-    const userNotes = localStorage.getItem("userNotes");
-    setUserName(username);
-    if (userNotes === null) {
-      setNotes([]);
-    } else {
-      setNotes(JSON.parse(userNotes));
+    if (typeof window !== "undefined") {
+      const username = localStorage.getItem("noteUserName");
+      const userNotes = localStorage.getItem("userNotes");
+      const trashNotes = localStorage.getItem("trash");
+
+      if (username) setUserName(username);
+      if (userNotes) setNotes(JSON.parse(userNotes));
+      if (trashNotes) setTrash(JSON.parse(trashNotes));
     }
   }, []);
 
@@ -125,8 +126,14 @@ export default function NoteApp() {
             {notes.map(({ id, heading, description, bookmark }) => (
               <div
                 key={id}
-                className="relative bg-gray-800/80 backdrop-blur-md border border-gray-700 rounded-2xl p-6 flex flex-col justify-between shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 ease-in-out"
+                className="relative bg-[#2d2d2d] border-l-4 border-yellow-400 rounded-lg px-5 py-4 shadow-sm hover:shadow-md transition duration-300"
+                style={{
+                  backgroundImage:
+                    "repeating-linear-gradient(transparent 0px, transparent 22px, rgba(255,255,255,0.04) 23px)",
+                  backgroundSize: "100% 24px",
+                }}
               >
+                {/* Bookmark */}
                 <button
                   onClick={() => {
                     bookmarkNote(id);
@@ -138,39 +145,40 @@ export default function NoteApp() {
                     );
                   }}
                   title={bookmark ? "Remove Bookmark" : "Add Bookmark"}
-                  className={`absolute top-4 right-4 z-10 ${
+                  className={`absolute top-3 right-3 z-10 ${
                     bookmark ? "bg-green-500" : "bg-gray-700"
-                  } hover:bg-green-600 p-2 rounded-full shadow-md transition-all`}
+                  } hover:bg-green-600 p-2 rounded-full shadow transition`}
                 >
                   <FaRegBookmark className="h-4 w-4 text-white" />
                 </button>
 
-                <h3 className="text-2xl font-extrabold text-white mb-4 leading-tight tracking-wider">
+                {/* Title */}
+                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 break-words">
                   {heading}
                 </h3>
 
-                <p className="text-gray-200 text-sm leading-relaxed mb-6 whitespace-pre-line">
+                {/* Description */}
+                <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap break-words">
                   {description}
                 </p>
 
-                <div className="mt-6 flex justify-between items-center gap-6 border-t border-gray-700 pt-4">
+                {/* Actions */}
+                <div className="mt-4 flex justify-end gap-3 text-sm border-t border-gray-700 pt-3">
                   <button
-                    className="flex items-center gap-2 text-gray-400 hover:text-green-500 text-sm transition"
-                    title="Edit"
+                    className="flex items-center gap-1 text-gray-400 hover:text-green-400 transition"
                     onClick={() => {
                       setEdittingDetails(notes.find((n) => n.id === id));
                       setEditting(true);
                     }}
                   >
-                    <FaEdit className="h-5 w-5" />
+                    <FaEdit className="h-4 w-4" />
                     Edit
                   </button>
                   <button
-                    className="flex items-center gap-2 text-gray-400 hover:text-red-500 text-sm transition"
-                    title="Delete"
+                    className="flex items-center gap-1 text-gray-400 hover:text-red-400 transition"
                     onClick={() => deleteNote(id)}
                   >
-                    <FaTrash className="h-5 w-5" />
+                    <FaTrash className="h-4 w-4" />
                     Delete
                   </button>
                 </div>
