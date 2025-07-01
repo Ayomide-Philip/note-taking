@@ -52,7 +52,7 @@ export default function NoteApp() {
         },
       ];
     });
-    toast("New Note Added Sucessfully.");
+    toast("New Idea Added to your Collection 💡💡💡");
   }
 
   function bookmarkNote(userId) {
