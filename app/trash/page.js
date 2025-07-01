@@ -4,11 +4,15 @@ import { FaTrashRestoreAlt, FaTrash } from "react-icons/fa";
 
 export default function TrashPage() {
   const [userTrash, setUserTrash] = useState([]);
-
+  const [userNote, setUserNote] = useState([]);
   useEffect(() => {
     const trash = localStorage.getItem("trash");
+    const userNote = localStorage.getItem("userNotes");
     if (trash) {
       setUserTrash(JSON.parse(trash));
+    }
+    if (userNote) {
+      setUserNote(JSON.parse(userNote));
     }
   }, []);
 
@@ -43,7 +47,7 @@ export default function TrashPage() {
                 <button
                   className="flex items-center gap-2 hover:text-green-400 transition"
                   title="Restore"
-                  onClick={() => restoreNote(id)} // <- Define this in your logic
+                  onClick={() => restoreNote(id)}
                 >
                   <FaTrashRestoreAlt className="h-4 w-4" />
                   Restore
