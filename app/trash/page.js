@@ -20,12 +20,21 @@ export default function TrashPage() {
     if (userNote !== null) {
       localStorage.setItem("userNotes", JSON.stringify(userNote));
     }
-  }, [userNote]);
+    if (userTrash !== null) {
+      localStorage.setItem("trash", JSON.stringify(userTrash));
+    }
+  }, [userNote, userTrash]);
 
   function restoreNote(id) {
     const restoredNote = userTrash.find((trash) => {
       return trash.id === id;
     });
+
+    const remainingTrashItem = userTrash.find((trash) => {
+      return trash.id !== id;
+    });
+
+    setUserTrash(remainingTrashItem === undefined ? [] : remainingTrashItem);
 
     const lastNoteId = userNote.at(-1) !== undefined ? userNote.at(-1).id : 0;
 
