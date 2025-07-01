@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +25,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-br from-gray-900 via-gray-850 to-gray-800 text-white font-sans`}
       >
-        {/* App Wrapper */}
         <div className="min-h-screen flex flex-col">
           {/* Navbar */}
           <nav className="w-full bg-gray-900/80 border-b border-gray-700 shadow-inner backdrop-blur-md">
@@ -31,7 +32,23 @@ export default function RootLayout({ children }) {
               <h1 className="text-lg sm:text-xl font-bold tracking-tight text-white">
                 📝 NoteApp
               </h1>
-              <div className="text-sm text-gray-400">Write & Save Notes</div>
+              <div className="flex gap-6 text-sm font-medium text-gray-400">
+                <a href="/" className="hover:text-blue-400 transition-colors">
+                  Home
+                </a>
+                <a
+                  href="/favourite"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Favourites
+                </a>
+                <a
+                  href="/trash"
+                  className="hover:text-blue-400 transition-colors"
+                >
+                  Trash
+                </a>
+              </div>
             </div>
           </nav>
 
