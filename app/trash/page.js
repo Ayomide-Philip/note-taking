@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { FaEdit, FaTrashRestoreAlt, FaTrash } from "react-icons/fa";
+import { FaTrashRestoreAlt, FaTrash } from "react-icons/fa";
 
 export default function TrashPage() {
   const [userTrash, setUserTrash] = useState([]);
