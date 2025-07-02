@@ -120,7 +120,7 @@ export default function NoteApp() {
           </div>
         )}
 
-        {notes.length > 0 ? (
+        {notes.length > 0 ? ( 
           <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {notes.map(({ id, heading, description, bookmark }) => (
               <div
