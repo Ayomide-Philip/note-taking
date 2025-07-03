@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { FaEdit, FaRegBookmark, FaTrash } from "react-icons/fa";
+import { FaRegBookmark } from "react-icons/fa";
 
 export default function Page() {
   const [bookmark, setBookmark] = useState([]);
