@@ -15,7 +15,7 @@ export default function Page() {
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
       <h1 className="text-3xl sm:text-4xl font-bold mb-8  flex items-center gap-2">
-        ⭐ Bookmark Notes
+        Bookmark Notes
       </h1>
 
       {bookmark && bookmark.length > 0 ? (
