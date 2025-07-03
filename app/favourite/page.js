@@ -14,9 +14,7 @@ export default function Page() {
   }, []);
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-8  flex items-center gap-2">
-        Bookmark Notes
-      </h1>
+      <h2 className="text-2xl font-bold mb-6 text-white">📑Bookmark Notes.</h2>
 
       {bookmark && bookmark.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
