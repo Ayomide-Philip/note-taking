@@ -56,7 +56,7 @@ export default function Page() {
           ))}
         </div>
       ) : (
-        <div className="text-center text-gray-400 mt-20">
+        <div className="text-center text-white mt-20">
           <p className="text-5xl mb-4">📂</p>
           <p className="text-lg font-medium">No favourites found.</p>
           <p className="text-sm">
