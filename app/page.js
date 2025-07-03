@@ -120,7 +120,7 @@ export default function NoteApp() {
           </div>
         )}
 
-        {notes.length > 0 ? ( 
+        {notes.length > 0 ? (
           <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {notes.map(({ id, heading, description, bookmark }) => (
               <div
@@ -198,7 +198,7 @@ export default function NoteApp() {
       </main>
 
       <button
-        className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 w-16 h-16 rounded-full shadow-lg text-2xl"
+        className="fixed bottom-6 right-6 bg-blue-600 cursor-pointer hover:bg-blue-700 text-white p-4 w-16 h-16 rounded-full shadow-lg text-2xl"
         onClick={() => isNewPost(true)}
       >
         +
