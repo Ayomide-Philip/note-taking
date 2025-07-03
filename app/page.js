@@ -164,7 +164,7 @@ export default function NoteApp() {
                 {/* Actions */}
                 <div className="mt-4 flex justify-end gap-3 text-sm border-t border-gray-700 pt-3">
                   <button
-                    className="flex items-center gap-1 text-gray-400 hover:text-green-400 cursor-pointer transition"
+                    className="flex items-center gap-1 text-white hover:text-green-400 cursor-pointer transition"
                     onClick={() => {
                       setEdittingDetails(notes.find((n) => n.id === id));
                       setEditting(true);
@@ -174,7 +174,7 @@ export default function NoteApp() {
                     Edit
                   </button>
                   <button
-                    className="flex items-center gap-1 text-gray-400 hover:text-red-400 transition cursor-pointer"
+                    className="flex items-center gap-1 text-white hover:text-red-400 transition cursor-pointer"
                     onClick={() => deleteNote(id)}
                   >
                     <FaTrash className="h-4 w-4" />
