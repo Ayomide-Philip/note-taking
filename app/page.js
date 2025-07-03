@@ -146,7 +146,7 @@ export default function NoteApp() {
                   title={bookmark ? "Remove Bookmark" : "Add Bookmark"}
                   className={`absolute top-3 right-3 z-10 ${
                     bookmark ? "bg-green-500" : "bg-gray-700"
-                  } hover:bg-green-600 p-2 rounded-full shadow transition`}
+                  } hover:bg-green-600 p-2 rounded-full shadow cursor-pointer transition`}
                 >
                   <FaRegBookmark className="h-4 w-4 text-white" />
                 </button>
@@ -164,7 +164,7 @@ export default function NoteApp() {
                 {/* Actions */}
                 <div className="mt-4 flex justify-end gap-3 text-sm border-t border-gray-700 pt-3">
                   <button
-                    className="flex items-center gap-1 text-gray-400 hover:text-green-400 transition"
+                    className="flex items-center gap-1 text-gray-400 hover:text-green-400 cursor-pointer transition"
                     onClick={() => {
                       setEdittingDetails(notes.find((n) => n.id === id));
                       setEditting(true);
@@ -174,7 +174,7 @@ export default function NoteApp() {
                     Edit
                   </button>
                   <button
-                    className="flex items-center gap-1 text-gray-400 hover:text-red-400 transition"
+                    className="flex items-center gap-1 text-gray-400 hover:text-red-400 transition cursor-pointer"
                     onClick={() => deleteNote(id)}
                   >
                     <FaTrash className="h-4 w-4" />
