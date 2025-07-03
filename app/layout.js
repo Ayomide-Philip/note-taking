@@ -42,7 +42,7 @@ export default function RootLayout({ children }) {
                   href="/favourite"
                   className="hover:text-blue-400 transition-colors"
                 >
-                  Favourites
+                  Bookmark
                 </a>
                 <a
                   href="/trash"
